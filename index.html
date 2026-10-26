@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -32,14 +31,30 @@
         <section id="catalog">
             <h2>Каталог товарів</h2>
             <article>
-                <h3>Смартфон</h3>
-                <p>Смартфон у хорошому стані.</p>
-                <p>Ціна: 5000 грн</p>
+                
+    <h3>Смартфон</h3>
+     <img
+    src="https://placehold.co/300x200?text=Smartphone"
+    alt="Смартфон у хорошому стані на продаж"
+    width="300"
+    height="200"
+     >
+     <p>Смартфон у хорошому стані.</p>
+     <p>Ціна: 5000 грн</p>
+
             </article>
             <article>
-                <h3>Ноутбук</h3>
-                <p>Ноутбук для навчання та роботи.</p>
-                <p>Ціна: 12000 грн</p>
+                
+     <h3>Ноутбук</h3>
+     <img
+       src="https://placehold.co/300x200?text=Laptop"
+       alt="Ноутбук для навчання та роботи на продаж"
+       width="300"
+       height="200"
+>
+     <p>Ноутбук для навчання та роботи.</p>
+    <p>Ціна: 12000 грн</p>
+
             </article>
         </section>
 
@@ -54,8 +69,49 @@
         </section>
 
         <section id="contacts">
-            <h2>Контакти</h2>
-            <p>Для зв'язку з адміністрацією: example@email.com.</p>
+            
+<section id="contacts">
+    <h2>Контакти</h2>
+    <p>Зв'яжіться з адміністрацією MarketPlace.</p>
+
+    <form action="#" method="post">
+        <p>
+            <label for="name">Ваше ім'я:</label><br>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Введіть ім'я"
+                required
+            >
+        </p>
+
+        <p>
+            <label for="email">Електронна пошта:</label><br>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@email.com"
+                required
+            >
+        </p>
+
+        <p>
+            <label for="message">Повідомлення:</label><br>
+            <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Введіть повідомлення"
+                required
+            ></textarea>
+        </p>
+
+        <button type="submit">Надіслати</button>
+    </form>
+</section>
+
         </section>
     </main>
 
