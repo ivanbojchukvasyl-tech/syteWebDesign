@@ -1,0 +1,132 @@
+
+/* Кольори сайту */
+:root {
+    --primary-color: #396131;
+    --text-color: #1f2937;
+    --bg-color: #f3f6fb;
+}
+
+/* Основні стилі */
+body {
+    font-family: Britannic, Berlin Sans;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Заголовки */
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+h3 {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+/* Верхня частина сайту */
+header {
+    background-color: var(--primary-color);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 30px 20px;
+}
+
+/* Навігація */
+nav {
+    padding: 12px 20px;
+    background-color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Посилання */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    opacity: 0.75;
+}
+
+/* Основний вміст */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Секції */
+section {
+    background-color: rgb(253, 253, 253);
+    padding: 24px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+/* Картки товарів */
+article {
+    padding: 16px;
+    margin: 16px 0;
+    border: 1px solid #dbe3ef;
+    border-radius: 8px;
+}
+
+article img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Поля форми */
+input,
+textarea {
+    padding: 10px;
+    margin-top: 5px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 300px;
+}
+
+/* Кнопка */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Нижня частина сайту */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
