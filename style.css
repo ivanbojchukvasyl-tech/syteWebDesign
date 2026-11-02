@@ -1,4 +1,34 @@
-/* ===== Базові стилі (mobile-first: для малих екранів) ===== */
+/* ===== Кроки 1-3: custom properties (світла тема за замовчуванням) ===== */
+:root {
+    --bg: #f5f5f5;
+    --surface: #ffffff;
+    --text: #222222;
+    --border: #dddddd;
+    --header-bg: #1e3a8a;
+    --nav-bg: #2563eb;
+    --on-accent: #ffffff;
+    --accent: #2563eb;
+    --accent-hover: #1e40af;
+    --focus: #1e3a8a;
+    --placeholder: #6b7280;
+}
+
+/* ===== Крок 2: темна тема (клас .dark-theme на <html>) ===== */
+.dark-theme {
+    --bg: #121212;
+    --surface: #1e1e1e;
+    --text: #e8e8e8;
+    --border: #3a3a3a;
+    --header-bg: #0f1f4d;
+    --nav-bg: #1d4ed8;
+    --on-accent: #ffffff;
+    --accent: #1d4ed8;
+    --accent-hover: #2563eb;
+    --focus: #93c5fd;
+    --placeholder: #a1a1aa;
+}
+
+/* ===== Базові стилі (mobile-first) ===== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,20 +36,20 @@
 }
 
 html {
-    font-size: 100%; /* 16px, rem рахується від цього */
+    font-size: 100%;
 }
 
 body {
     font-family: Arial, sans-serif;
     font-size: 1rem;
     line-height: 1.5;
-    color: #222;
-    background: #f5f5f5;
+    color: var(--text);
+    background-color: var(--bg);
 }
 
 header {
-    background: #1e3a8a;
-    color: #fff;
+    background-color: var(--header-bg);
+    color: var(--on-accent);
     text-align: center;
     padding: 1.25rem 1rem;
 }
@@ -28,12 +58,24 @@ header h1 {
     font-size: 1.5rem;
 }
 
+/* Кнопка перемикача теми */
+#theme-toggle {
+    margin-top: 0.75rem;
+    background: transparent;
+    color: var(--on-accent);
+    border: 1px solid var(--on-accent);
+}
+
+#theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
 /* Навігація: на мобільному в стовпчик */
 nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #2563eb;
+    background-color: var(--nav-bg);
     padding: 0.75rem 1rem;
 }
 
@@ -46,7 +88,7 @@ nav ul {
 }
 
 nav a {
-    color: #fff;
+    color: var(--on-accent);
     text-decoration: none;
     font-weight: bold;
 }
@@ -71,27 +113,27 @@ h2 {
     margin-bottom: 1rem;
 }
 
-/* Галерея: на мобільному 1 колонка (Grid) */
+/* Галерея: 1 колонка (Grid) */
 .cards {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
 }
 
-/* Вміст картки: Flexbox */
+/* Картка (Flexbox всередині) */
 .cards article {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    background: #fff;
+    background-color: var(--surface);
+    color: var(--text);
     padding: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-radius: 0.5rem;
     text-align: center;
 }
 
-/* Зображення не виходять за межі контейнера */
 img {
     max-width: 100%;
     height: auto;
@@ -111,21 +153,49 @@ form textarea {
     max-width: 25rem;
     padding: 0.5rem;
     font-size: 1rem;
+    background-color: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 0.25rem;
 }
 
+form input::placeholder,
+form textarea::placeholder {
+    color: var(--placeholder);
+}
+
+/* Кнопки */
 button {
     padding: 0.5rem 1.25rem;
     font-size: 1rem;
-    background: #2563eb;
-    color: #fff;
+    background-color: var(--accent);
+    color: var(--on-accent);
     border: none;
     border-radius: 0.375rem;
     cursor: pointer;
 }
 
+button:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Крок 7: focus-стани в обох темах */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+}
+
+nav a:focus-visible,
+header button:focus-visible {
+    outline-color: #ffffff;
+}
+
 footer {
-    background: #1e3a8a;
-    color: #fff;
+    background-color: var(--header-bg);
+    color: var(--on-accent);
     text-align: center;
     padding: 1rem;
 }
@@ -136,7 +206,6 @@ footer {
         font-size: 2rem;
     }
 
-    /* Навігація в ряд */
     nav ul {
         flex-direction: row;
         gap: 1.5rem;
@@ -146,7 +215,6 @@ footer {
         padding: 1.5rem;
     }
 
-    /* Галерея: 2 колонки */
     .cards {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.25rem;
@@ -155,11 +223,26 @@ footer {
 
 /* ===== Десктоп: від 1024px ===== */
 @media (min-width: 1024px) {
-    /* Галерея: 3 колонки */
     .cards {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* ===== Великі екрани: від 1200px (додаткове завдання) ===== */
+/* ===== Великі екрани: від 1200px ===== */
 @media (min-width: 1200px) {
+    main {
+        padding: 2.5rem;
+    }
+
+    section {
+        margin-bottom: 3rem;
+    }
+
+    .cards {
+        gap: 2rem;
+    }
+
+    nav ul {
+        gap: 2.5rem;
+    }
+}
