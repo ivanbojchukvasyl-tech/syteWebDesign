@@ -5,16 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarketPlace — купівля та продаж товарів</title>
     <meta name="description" content="Онлайн-платформа для купівлі та продажу товарів.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>MarketPlace</h1>
-        <p>Знаходь потрібне. Продавай легко.</p>
-        <button id="theme-toggle" type="button">Змінити тему</button>
+    <!-- Спрайт іконок (Lucide, ISC license) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="icon-phone" viewBox="0 0 24 24">
+            <rect x="5" y="2" width="14" height="20" rx="2"/>
+            <path d="M12 18h.01"/>
+        </symbol>
+        <symbol id="icon-laptop" viewBox="0 0 24 24">
+            <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/>
+        </symbol>
+        <symbol id="icon-tablet" viewBox="0 0 24 24">
+            <rect x="4" y="2" width="16" height="20" rx="2"/>
+            <path d="M12 18h.01"/>
+        </symbol>
+        <symbol id="icon-headphones" viewBox="0 0 24 24">
+            <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/>
+        </symbol>
+        <symbol id="icon-watch" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="6"/>
+            <path d="M12 10v2l1 1"/>
+            <path d="m16.13 7.66-.81-4.05a2 2 0 0 0-2-1.61h-2.68a2 2 0 0 0-2 1.61l-.78 4.05"/>
+            <path d="m7.88 16.36.8 4a2 2 0 0 0 2 1.61h2.72a2 2 0 0 0 2-1.61l.81-4.05"/>
+        </symbol>
+        <symbol id="icon-keyboard" viewBox="0 0 24 24">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"/>
+        </symbol>
+    </svg>
+
+    <header class="site-header">
+        <button id="theme-toggle" class="btn btn--ghost" type="button">🌙 Змінити тему</button>
+        <div class="brand">
+            <h1>MarketPlace</h1>
+            <p>Знаходь потрібне. Продавай легко.</p>
+        </div>
     </header>
 
-    <nav>
+    <nav class="site-nav">
         <ul>
             <li><a href="#home">Головна</a></li>
             <li><a href="#catalog">Каталог товарів</a></li>
@@ -25,7 +58,7 @@
     </nav>
 
     <main>
-        <section id="home">
+        <section id="home" class="hero">
             <h2>Ласкаво просимо до MarketPlace!</h2>
             <p>Платформа для зручної купівлі та продажу товарів онлайн.</p>
         </section>
@@ -33,175 +66,101 @@
         <section id="catalog">
             <h2>Каталог товарів</h2>
             <div class="cards">
-                <article>
-                    <h3>Смартфон</h3>
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn-RFGfiS6I7NzPnrlsIT2sggD__EzaAeeffKQB7X4hMdw0H-cLAFg9co&s=10"
-                        alt="Смартфон у хорошому стані"
-                        width="300"
-                        height="200"
-                    >
-                    <p>Смартфон у хорошому стані.</p>
-                    <p>Ціна: 67000 грн</p>
+                <article class="card">
+                    <div class="card__media"><svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg></div>
+                    <h3 class="card__title">Смартфон</h3>
+                    <p class="card__text">Смартфон у хорошому стані.</p>
+                    <p class="card__price">Ціна: 67000 грн</p>
+                    <button class="btn btn--primary" type="button">Деталі</button>
                 </article>
 
-                <article>
-                    <h3>Ноутбук</h3>
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbVQqpCOpE0FnzzhNWU_Dt__dEGvoNl770c8aimjmAr4uEDL8Flxy06iI&s=10"
-                        alt="Ноутбук для навчання та роботи на продаж"
-                        width="300"
-                        height="200"
-                    >
-                    <p>Ноутбук для професійного геймінгу та стрімінгу.</p>
-                    <p>Ціна: 6700 грн</p>
+                <article class="card">
+                    <div class="card__media"><svg class="icon" aria-hidden="true"><use href="#icon-laptop"/></svg></div>
+                    <h3 class="card__title">Ноутбук</h3>
+                    <p class="card__text">Ноутбук для геймінгу.</p>
+                    <p class="card__price">Ціна: 6700 грн</p>
+                    <button class="btn btn--primary" type="button">Деталі</button>
                 </article>
 
-                <article>
-                    <h3>Планшет</h3>
-                    <img
-                        src="https://picsum.photos/id/1/300/200"
-                        alt="Планшет"
-                        width="300"
-                        height="200"
-                    >
-                    <p>Планшет для навчання та читання.</p>
-                    <p>Ціна: 9500 грн</p>
+                <article class="card">
+                    <div class="card__media"><svg class="icon" aria-hidden="true"><use href="#icon-tablet"/></svg></div>
+                    <h3 class="card__title">Планшет</h3>
+                    <p class="card__text">Планшет для навчання.</p>
+                    <p class="card__price">Ціна: 9500 грн</p>
+                    <button class="btn btn--primary" type="button">Деталі</button>
                 </article>
 
-                <article>
-                    <h3>Навушники</h3>
-                    <img
-                        src="https://picsum.photos/id/2/300/200"
-                        alt="Бездротові навушники"
-                        width="300"
-                        height="200"
-                    >
-                    <p>Бездротові навушники з шумозаглушенням.</p>
-                    <p>Ціна: 2300 грн</p>
+                <article class="card">
+                    <div class="card__media"><svg class="icon" aria-hidden="true"><use href="#icon-headphones"/></svg></div>
+                    <h3 class="card__title">Навушники</h3>
+                    <p class="card__text">Бездротові навушники.</p>
+                    <p class="card__price">Ціна: 2300 грн</p>
+                    <button class="btn btn--primary" type="button">Деталі</button>
                 </article>
 
-                <article>
-                    <h3>Смарт-годинник</h3>
-                    <img
-                        src="https://picsum.photos/id/3/300/200"
-                        alt="Смарт-годинник"
-                        width="300"
-                        height="200"
-                    >
-                    <p>Годинник із пульсометром і GPS.</p>
-                    <p>Ціна: 3100 грн</p>
+                <article class="card">
+                    <div class="card__media"><svg class="icon" aria-hidden="true"><use href="#icon-watch"/></svg></div>
+                    <h3 class="card__title">Смарт-годинник</h3>
+                    <p class="card__text">Годинник із GPS.</p>
+                    <p class="card__price">Ціна: 3100 грн</p>
+                    <button class="btn btn--primary" type="button">Деталі</button>
                 </article>
 
-                <article>
-                    <h3>Клавіатура</h3>
-                    <img
-                        src="https://picsum.photos/id/4/300/200"
-                        alt="Механічна клавіатура"
-                        width="300"
-                        height="200"
-                    >
-                    <p>Механічна клавіатура з підсвіткою.</p>
-                    <p>Ціна: 1800 грн</p>
+                <article class="card">
+                    <div class="card__media"><svg class="icon" aria-hidden="true"><use href="#icon-keyboard"/></svg></div>
+                    <h3 class="card__title">Клавіатура</h3>
+                    <p class="card__text">Механічна клавіатура.</p>
+                    <p class="card__price">Ціна: 1800 грн</p>
+                    <button class="btn btn--primary" type="button">Деталі</button>
                 </article>
             </div>
         </section>
 
-        <section id="sell">
+        <section id="sell" class="panel">
             <h2>Продати товар</h2>
             <p>Незабаром тут можна буде додавати власні оголошення.</p>
+            <button class="btn btn--primary" type="button">Додати оголошення</button>
         </section>
 
-        <section id="about">
+        <section id="about" class="panel">
             <h2>Про нас</h2>
             <p>MarketPlace — навчальний проєкт онлайн-платформи для купівлі та продажу товарів.</p>
+            <button class="btn btn--secondary" type="button">Дізнатися більше</button>
         </section>
 
-        <section id="contacts">
-    <h2>Контакти</h2>
-    <p>Зв'яжіться з адміністрацією MarketPlace.</p>
+        <section id="contacts" class="panel">
+            <h2>Контакти</h2>
+            <p>Зв'яжіться з адміністрацією MarketPlace.</p>
 
-    <form id="contact-form" action="#" method="post" novalidate>
-        <p>
-            <label for="name">Ваше ім'я:</label><br>
-            <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Введіть ім'я"
-            >
-            <span class="field-error" id="name-error"></span>
-        </p>
+            <form id="contact-form" class="form" action="#" method="post" novalidate>
+                <div class="field field--name">
+                    <label for="name">Ваше ім'я:</label>
+                    <input type="text" id="name" name="name" placeholder="Введіть ім'я">
+                    <span class="field-error" id="name-error"></span>
+                </div>
 
-        <p>
-            <label for="email">Електронна пошта:</label><br>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="example@email.com"
-            >
-            <span class="field-error" id="email-error"></span>
-        </p>
+                <div class="field field--email">
+                    <label for="email">Електронна пошта:</label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com">
+                    <span class="field-error" id="email-error"></span>
+                </div>
 
-        <p>
-            <label for="message">Повідомлення:</label><br>
-            <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="Введіть повідомлення"
-            ></textarea>
-            <span class="field-error" id="message-error"></span>
-        </p>
+                <div class="field field--message">
+                    <label for="message">Повідомлення:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Введіть повідомлення"></textarea>
+                    <span class="field-error" id="message-error"></span>
+                </div>
 
-        <div id="form-message" class="form-message" role="status" aria-live="polite"></div>
-
-        <button type="submit">Надіслати</button>
-    </form>
-</section>
-
-            <form action="#" method="post">
-                <p>
-                    <label for="name">Ваше ім'я:</label><br>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Введіть ім'я"
-                        required
-                    >
-                </p>
-
-                <p>
-                    <label for="email">Електронна пошта:</label><br>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="example@email.com"
-                        required
-                    >
-                </p>
-
-                <p>
-                    <label for="message">Повідомлення:</label><br>
-                    <textarea
-                        id="message"
-                        name="message"
-                        rows="5"
-                        placeholder="Введіть повідомлення"
-                        required
-                    ></textarea>
-                </p>
-
-                <button type="submit">Надіслати</button>
+                <div class="form__actions">
+                    <div id="form-message" class="form-message" role="status" aria-live="polite"></div>
+                    <button class="btn btn--primary" type="submit">Надіслати</button>
+                </div>
             </form>
         </section>
     </main>
 
-    <footer>
-    <p>&copy; <span id="year">2026</span> MarketPlace. Усі права захищені.</p>
+    <footer class="site-footer">
+        <p>&copy; <span id="year">2026</span> MarketPlace. Усі права захищені.</p>
     </footer>
 
     <script src="script.js" defer></script>
