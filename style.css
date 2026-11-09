@@ -246,3 +246,9 @@ footer {
         gap: 2.5rem;
     }
 }
+/* Підсвітка активного пункту меню (додається через JS) */
+nav a.active {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    color: var(--accent-gold, #facc15);
+}
