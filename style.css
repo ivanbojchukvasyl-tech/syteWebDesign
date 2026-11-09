@@ -252,3 +252,53 @@ nav a.active {
     text-underline-offset: 6px;
     color: var(--accent-gold, #facc15);
 }
+/* Повідомлення про помилки та успіх (практична 15) */
+.field-error {
+    display: block;
+    min-height: 1.25rem;
+    font-size: 0.875rem;
+    color: #b91c1c;
+}
+
+.form-message {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.form-message.error {
+    color: #b91c1c;
+}
+
+.form-message.success {
+    color: #15803d;
+}
+
+input.invalid,
+textarea.invalid {
+    border-color: #b91c1c;
+}
+
+input.valid,
+textarea.valid {
+    border-color: #15803d;
+}
+
+/* Світліші відтінки для темної теми, щоб був контраст */
+.dark-theme .field-error,
+.dark-theme .form-message.error {
+    color: #fca5a5;
+}
+
+.dark-theme .form-message.success {
+    color: #86efac;
+}
+
+.dark-theme input.invalid,
+.dark-theme textarea.invalid {
+    border-color: #fca5a5;
+}
+
+.dark-theme input.valid,
+.dark-theme textarea.valid {
+    border-color: #86efac;
+}

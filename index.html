@@ -118,8 +118,48 @@
         </section>
 
         <section id="contacts">
-            <h2>Контакти</h2>
-            <p>Зв'яжіться з адміністрацією MarketPlace.</p>
+    <h2>Контакти</h2>
+    <p>Зв'яжіться з адміністрацією MarketPlace.</p>
+
+    <form id="contact-form" action="#" method="post" novalidate>
+        <p>
+            <label for="name">Ваше ім'я:</label><br>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Введіть ім'я"
+            >
+            <span class="field-error" id="name-error"></span>
+        </p>
+
+        <p>
+            <label for="email">Електронна пошта:</label><br>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@email.com"
+            >
+            <span class="field-error" id="email-error"></span>
+        </p>
+
+        <p>
+            <label for="message">Повідомлення:</label><br>
+            <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Введіть повідомлення"
+            ></textarea>
+            <span class="field-error" id="message-error"></span>
+        </p>
+
+        <div id="form-message" class="form-message" role="status" aria-live="polite"></div>
+
+        <button type="submit">Надіслати</button>
+    </form>
+</section>
 
             <form action="#" method="post">
                 <p>
