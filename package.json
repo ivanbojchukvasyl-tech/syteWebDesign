@@ -1,0 +1,25 @@
+{
+  "name": "sytewebdesign",
+  "version": "1.0.0",
+  "description": "MarketPlace WebDesign project",
+  "main": "script.js",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./tailwind.css -o ./output.css --watch",
+    "build": "npx @tailwindcss/cli -i ./tailwind.css -o ./output.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanbojchukvasyl-tech/syteWebDesign.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivanbojchukvasyl-tech/syteWebDesign/issues"
+  },
+  "homepage": "https://github.com/ivanbojchukvasyl-tech/syteWebDesign#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "tailwindcss": "^4.3.5"
+  }
+}
