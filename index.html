@@ -9,6 +9,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="output.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Спрайт іконок (Lucide, ISC license) -->
@@ -126,6 +137,12 @@
             <p class="text-sm font-bold text-brand-gold">Ціна: 1800 грн</p>
             <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
         </article>
+        
+<section id="reviews">
+    <h2>Відгуки</h2>
+    <p id="reviews-status" class="form-message" role="status" aria-live="polite"></p>
+    <div id="reviews-list" class="reviews-list"></div>
+</section>
 
     </div>
 </section>

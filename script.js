@@ -1,4 +1,4 @@
-/* ===== Перемикач теми ===== */
+/* ===== Перемикач теми (практичні 9, 15, 16) ===== */
 const root = document.documentElement;
 const toggle = document.getElementById("theme-toggle");
 
@@ -21,21 +21,6 @@ toggle.addEventListener("click", () => {
     updateButton();
 });
 
-const saved = localStorage.getItem("theme");
-const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-if (saved === "dark" || (saved === null && systemDark)) {
-    root.classList.add("dark-theme");
-}
-updateButton();
-
-toggle.addEventListener("click", () => {
-    root.classList.toggle("dark-theme");
-    const isDark = root.classList.contains("dark-theme");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    updateButton();
-});
-
 /* ===== Практична 14: базові скрипти та DOM ===== */
 const siteName = "MarketPlace";
 const products = ["Смартфон", "Ноутбук", "Планшет", "Навушники", "Смарт-годинник", "Клавіатура"];
@@ -51,7 +36,7 @@ if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
 }
 
-const cards = document.querySelectorAll(".cards article");
+const cards = document.querySelectorAll("#catalog article");
 console.log("Кількість карток на сторінці:", cards.length);
 
 const navLinks = document.querySelectorAll("nav a");
@@ -70,7 +55,6 @@ const emailInput = document.querySelector("#email");
 const messageInput = document.querySelector("#message");
 const formMessage = document.querySelector("#form-message");
 
-// Перевірки: повертають текст помилки або порожній рядок, якщо все гаразд
 function validateName() {
     const value = nameInput.value.trim();
     if (value === "") return "Введіть ім'я.";
@@ -82,7 +66,6 @@ function validateEmail() {
     const value = emailInput.value.trim();
     if (value === "") return "Введіть електронну пошту.";
     if (!value.includes("@")) return "Пошта має містити символ «@».";
-    // проста перевірка формату: щось@щось.щось
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!pattern.test(value)) return "Введіть коректну адресу, наприклад name@example.com.";
     return "";
@@ -95,7 +78,6 @@ function validateMessage() {
     return "";
 }
 
-// Показує помилку під полем і підсвічує його
 function showFieldState(input, errorId, errorText) {
     const errorElement = document.querySelector("#" + errorId);
     errorElement.textContent = errorText;
@@ -103,7 +85,7 @@ function showFieldState(input, errorId, errorText) {
     input.classList.toggle("valid", errorText === "" && input.value.trim() !== "");
 }
 
-// Додаткове завдання: inline-перевірка під час вводу
+// Inline-валідація під час вводу
 nameInput.addEventListener("input", () => {
     showFieldState(nameInput, "name-error", validateName());
 });
@@ -114,16 +96,19 @@ messageInput.addEventListener("input", () => {
     showFieldState(messageInput, "message-error", validateMessage());
 });
 
-// Кроки 3-6: обробка відправки форми
-form.addEventListener("submit", (event) => {
-    event.preventDefault(); // сторінка не перезавантажується
+/* ===== Практична 18: POST через fetch ===== */
+const API_URL = "https://jsonplaceholder.typicode.com/posts";
+const submitButton = form.querySelector('button[type="submit"]');
 
-    // Крок 4: значення полів
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const message = messageInput.value.trim();
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-    // Крок 5: валідація
+    const data = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        message: messageInput.value.trim()
+    };
+
     const nameError = validateName();
     const emailError = validateEmail();
     const messageError = validateMessage();
@@ -132,20 +117,94 @@ form.addEventListener("submit", (event) => {
     showFieldState(emailInput, "email-error", emailError);
     showFieldState(messageInput, "message-error", messageError);
 
-    // Крок 6: повідомлення на сторінці
     if (nameError || emailError || messageError) {
         formMessage.textContent = "Виправте помилки у формі та спробуйте ще раз.";
         formMessage.className = "form-message error";
         return;
     }
 
-    console.log("Дані форми:", { name, email, message });
+    const defaultText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = "Надсилання…";
+    formMessage.textContent = "";
+    formMessage.className = "form-message";
 
-    formMessage.textContent = "Дякуємо, " + name + "! Ваше повідомлення надіслано.";
-    formMessage.className = "form-message success";
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
 
-    form.reset();
-    [nameInput, emailInput, messageInput].forEach((input) => {
-        input.classList.remove("valid", "invalid");
-    });
+        if (!response.ok) {
+            throw new Error("Сервер повернув помилку: " + response.status);
+        }
+
+        const result = await response.json();
+        console.log("Відповідь сервера:", result);
+
+        formMessage.textContent = "Дякуємо, " + data.name + "! Повідомлення надіслано (id: " + result.id + ").";
+        formMessage.className = "form-message success";
+
+        form.reset();
+        [nameInput, emailInput, messageInput].forEach((input) => {
+            input.classList.remove("valid", "invalid");
+        });
+    } catch (error) {
+        console.error("Помилка відправки:", error);
+
+        if (error instanceof TypeError) {
+            formMessage.textContent = "Немає з'єднання з інтернетом. Перевірте мережу й спробуйте ще раз.";
+        } else {
+            formMessage.textContent = "Не вдалося надіслати повідомлення. Спробуйте пізніше.";
+        }
+        formMessage.className = "form-message error";
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = defaultText;
+    }
 });
+
+/* ===== Практична 18: GET і відгуки на сторінці ===== */
+async function loadReviews() {
+    const list = document.querySelector("#reviews-list");
+    const status = document.querySelector("#reviews-status");
+
+    if (!list || !status) return;
+
+    status.textContent = "Завантаження відгуків…";
+    status.className = "form-message";
+
+    try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=3");
+
+        if (!response.ok) {
+            throw new Error("Помилка сервера: " + response.status);
+        }
+
+        const posts = await response.json();
+        list.innerHTML = "";
+
+        posts.forEach((post) => {
+            const review = document.createElement("article");
+            review.className = "review";
+
+            const reviewTitle = document.createElement("h3");
+            reviewTitle.textContent = post.title;
+
+            const text = document.createElement("p");
+            text.textContent = post.body;
+
+            review.append(reviewTitle, text);
+            list.append(review);
+        });
+
+        status.textContent = "";
+    } catch (error) {
+        console.error("Не вдалося завантажити відгуки:", error);
+        status.textContent = "Не вдалося завантажити відгуки. Перевірте з'єднання.";
+        status.className = "form-message error";
+    }
+}
+
+loadReviews();

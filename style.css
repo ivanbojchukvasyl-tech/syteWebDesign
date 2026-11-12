@@ -54,6 +54,22 @@
     --color-success: #15803d;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 /* ===== Базові стилі (mobile-first) ===== */
 * {
     box-sizing: border-box;
@@ -388,5 +404,35 @@ input.valid,   textarea.valid   { border-color: var(--color-success); }
     .cards {
         grid-template-columns: repeat(3, 1fr);
         gap: var(--space-5);
+    }
+}
+/* Відгуки (практична 18) */
+.reviews-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+.review {
+    padding: var(--space-4);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.review h3 {
+    margin-bottom: var(--space-2);
+    font-size: var(--font-size-body);
+    text-transform: capitalize;
+}
+
+.review p {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+@media (min-width: 768px) {
+    .reviews-list {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
