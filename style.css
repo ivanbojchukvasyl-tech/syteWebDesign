@@ -54,14 +54,9 @@
     --color-success: #15803d;
 }
 
+/* Плавна прокрутка до секцій */
 html {
     scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -95,6 +90,16 @@ h2 { font-size: var(--font-size-h2); margin-bottom: var(--space-4); }
 h3 { font-size: var(--font-size-h3); }
 
 img { max-width: 100%; height: auto; }
+
+/* Візуально прихований текст (доступний для скрінрідерів) */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
 
 /* ===== Кнопки (Figma: компонент Button, variants) ===== */
 .btn {
@@ -135,6 +140,11 @@ img { max-width: 100%; height: auto; }
 .btn--ghost:hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
+}
+
+/* ===== Закріплена шапка (обгортка header + nav) ===== */
+.site-top {
+    background-color: var(--color-bg);
 }
 
 /* ===== Header ===== */
@@ -183,6 +193,146 @@ img { max-width: 100%; height: auto; }
     color: var(--color-accent);
 }
 
+/* ===== Головний екран: категорії + бренди ===== */
+.categories {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background-color: var(--color-border);
+}
+
+.category {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 14rem;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--color-accent);
+    background-color: var(--color-surface);
+    /* Фото можна задати через змінну --img (style="--img: url('images/phone.jpg')") */
+    background-image:
+        radial-gradient(
+            circle at 50% 25%,
+            color-mix(in srgb, var(--color-primary) 28%, transparent),
+            transparent 70%
+        ),
+        var(--img, none);
+    background-size: cover;
+    background-position: center;
+}
+
+.category::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s;
+}
+
+.category:hover::before {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.category__icon {
+    position: absolute;
+    width: 7rem;
+    height: 7rem;
+    stroke-width: 0.8;
+    opacity: 0.3;
+    transition: transform 0.4s, opacity 0.4s;
+}
+
+.category:hover .category__icon {
+    transform: scale(1.12);
+    opacity: 0.5;
+}
+
+.category__label {
+    position: relative;
+    z-index: 1;
+    padding: var(--space-3) 2.5rem;
+    background-color: #F0D8AD;      /* біло-золотий */
+    color: #111111;
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    border-radius: 0.75rem;         /* закруглені кути */
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.category:hover .category__label {
+    background-color: var(--color-primary);  /* насичений золотий */
+    color: var(--color-on-primary);
+    transform: translateY(-2px);
+}
+
+.category:hover .category__label {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+/* Рядок брендів, що прокручується */
+.brands {
+    overflow: hidden;
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--color-border);
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.brands__track {
+    display: flex;
+    width: max-content;
+    list-style: none;
+    animation: brands-scroll 30s linear infinite;
+}
+
+.brands__track:hover {
+    animation-play-state: paused;
+}
+
+.brands__track li {
+    padding: 0 var(--space-6);
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.brands__track li:nth-child(3n) {
+    font-family: var(--font-heading);
+}
+
+.brands__track li:nth-child(3n + 1) {
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+@keyframes brands-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Без анімації: бренди в рядок по центру, без дубліката */
+@media (prefers-reduced-motion: reduce) {
+    .brands {
+        mask-image: none;
+    }
+
+    .brands__track {
+        width: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        animation: none;
+    }
+
+    .brands__track li[aria-hidden="true"] {
+        display: none;
+    }
+}
+
 /* ===== Основний вміст ===== */
 main {
     width: 100%;
@@ -193,16 +343,6 @@ main {
 
 main > section {
     margin-bottom: var(--space-6);
-}
-
-.hero {
-    text-align: center;
-    padding: var(--space-6) 0;
-}
-
-.hero p {
-    color: var(--color-text-muted);
-    font-size: var(--font-size-small);
 }
 
 /* ===== Картки (Grid + Flexbox) ===== */
@@ -257,6 +397,38 @@ main > section {
 .card .btn {
     margin-top: auto;
     width: 100%;
+}
+
+/* ===== Відгуки (практична 18) ===== */
+.reviews-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius);
+}
+
+.review h3 {
+    margin: 0;
+    font-size: var(--font-size-body);
+}
+
+.review h3::first-letter {
+    text-transform: uppercase;
+}
+
+.review p {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
 }
 
 /* ===== Панелі (Sell, About, Contacts) ===== */
@@ -350,24 +522,29 @@ input.valid,   textarea.valid   { border-color: var(--color-success); }
 
 /* ===== Планшет: від 768px ===== */
 @media (min-width: 768px) {
+    /* Шапка залишається вгорі при прокрутці */
+    .site-top {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    }
+
     .site-header {
         display: grid;
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
-        padding: var(--space-5) var(--space-6);
+        padding: var(--space-3) var(--space-6);
     }
 
     .site-header .btn--ghost {
+        grid-column: 1;
+        grid-row: 1;
         justify-self: start;
     }
 
     .brand {
         grid-column: 2;
-        grid-row: 1;
-    }
-
-    .site-header .btn--ghost {
-        grid-column: 1;
         grid-row: 1;
     }
 
@@ -380,8 +557,25 @@ input.valid,   textarea.valid   { border-color: var(--color-success); }
         padding: var(--space-5);
     }
 
+    /* Заголовки секцій не ховаються під закріпленою шапкою */
+    section[id] {
+        scroll-margin-top: 9rem;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category {
+        min-height: 16rem;
+    }
+
     .cards {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reviews-list {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     /* Форма: ім'я та пошта зліва, повідомлення справа */
@@ -401,38 +595,17 @@ input.valid,   textarea.valid   { border-color: var(--color-success); }
 
 /* ===== Десктоп: від 1024px ===== */
 @media (min-width: 1024px) {
+    .categories {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Висота екрана мінус шапка й рядок брендів, щоб каталог лишався нижче */
+    .category {
+        min-height: max(24rem, calc(100svh - 17rem));
+    }
+
     .cards {
         grid-template-columns: repeat(3, 1fr);
         gap: var(--space-5);
-    }
-}
-/* Відгуки (практична 18) */
-.reviews-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-}
-
-.review {
-    padding: var(--space-4);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-}
-
-.review h3 {
-    margin-bottom: var(--space-2);
-    font-size: var(--font-size-body);
-    text-transform: capitalize;
-}
-
-.review p {
-    color: var(--color-text-muted);
-    font-size: var(--font-size-small);
-}
-
-@media (min-width: 768px) {
-    .reviews-list {
-        grid-template-columns: repeat(3, 1fr);
     }
 }

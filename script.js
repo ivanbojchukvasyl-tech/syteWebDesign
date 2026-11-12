@@ -166,6 +166,14 @@ form.addEventListener("submit", async (event) => {
 });
 
 /* ===== Практична 18: GET і відгуки на сторінці ===== */
+
+// Власні тексти відгуків (редагуйте тут)
+const customReviews = [
+    { author: "Олена К.", text: "Купила планшет у хорошому стані, продавець відповів одразу. Дуже зручний сайт." },
+    { author: "Андрій М.", text: "Швидко продав ноутбук, оголошення додав за кілька хвилин. Рекомендую." },
+    { author: "Ірина С.", text: "Зручний каталог і зрозумілі ціни. Товар прийшов швидко." }
+];
+
 async function loadReviews() {
     const list = document.querySelector("#reviews-list");
     const status = document.querySelector("#reviews-status");
@@ -185,15 +193,18 @@ async function loadReviews() {
         const posts = await response.json();
         list.innerHTML = "";
 
-        posts.forEach((post) => {
+        posts.forEach((post, index) => {
+            // Якщо власного тексту для цього відгуку немає, беремо дані з API
+            const custom = customReviews[index] || { author: post.title, text: post.body };
+
             const review = document.createElement("article");
             review.className = "review";
 
             const reviewTitle = document.createElement("h3");
-            reviewTitle.textContent = post.title;
+            reviewTitle.textContent = custom.author;
 
             const text = document.createElement("p");
-            text.textContent = post.body;
+            text.textContent = custom.text;
 
             review.append(reviewTitle, text);
             list.append(review);

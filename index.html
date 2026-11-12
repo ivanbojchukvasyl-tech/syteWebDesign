@@ -9,17 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="output.css">
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Спрайт іконок (Lucide, ISC license) -->
@@ -50,102 +39,148 @@
         </symbol>
     </svg>
 
-    <header class="site-header">
-        <button id="theme-toggle" class="btn btn--ghost" type="button">🌙 Змінити тему</button>
-        <div class="brand">
-            <h1>MarketPlace</h1>
-            <p>Знаходь потрібне. Продавай легко.</p>
-        </div>
-    </header>
+    <!-- Закріплена шапка: header + nav в одному блоці -->
+    <div class="site-top">
+        <header class="site-header">
+            <button id="theme-toggle" class="btn btn--ghost" type="button">🌙 Змінити тему</button>
+            <div class="brand">
+                <h1>MarketPlace</h1>
+                <p>Знаходь потрібне. Продавай легко.</p>
+            </div>
+        </header>
 
-    <nav class="site-nav">
-        <ul>
-            <li><a href="#home">Головна</a></li>
-            <li><a href="#catalog">Каталог товарів</a></li>
-            <li><a href="#sell">Продати товар</a></li>
-            <li><a href="#about">Про нас</a></li>
-            <li><a href="#contacts">Контакти</a></li>
-        </ul>
-    </nav>
+        <nav class="site-nav">
+            <ul>
+                <li><a href="#home">Головна</a></li>
+                <li><a href="#catalog">Каталог товарів</a></li>
+                <li><a href="#reviews">Відгуки</a></li>
+                <li><a href="#sell">Продати товар</a></li>
+                <li><a href="#about">Про нас</a></li>
+                <li><a href="#contacts">Контакти</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Головний екран: панелі-категорії та рядок брендів (на всю ширину) -->
+    <section id="home" class="home">
+        <h2 class="visually-hidden">Категорії товарів</h2>
+
+        <div class="categories">
+            <a class="category" href="#catalog">
+                <svg class="icon category__icon" aria-hidden="true"><use href="#icon-phone"/></svg>
+                <span class="category__label">Смартфони</span>
+            </a>
+            <a class="category" href="#catalog">
+                <svg class="icon category__icon" aria-hidden="true"><use href="#icon-laptop"/></svg>
+                <span class="category__label">Ноутбуки</span>
+            </a>
+            <a class="category" href="#catalog">
+                <svg class="icon category__icon" aria-hidden="true"><use href="#icon-headphones"/></svg>
+                <span class="category__label">Навушники</span>
+            </a>
+            <a class="category" href="#catalog">
+                <svg class="icon category__icon" aria-hidden="true"><use href="#icon-watch"/></svg>
+                <span class="category__label">Гаджети</span>
+            </a>
+        </div>
+
+        <div class="brands" aria-label="Бренди на платформі">
+            <ul class="brands__track">
+                <li>Apple</li>
+                <li>Samsung</li>
+                <li>Sony</li>
+                <li>Lenovo</li>
+                <li>ASUS</li>
+                <li>Xiaomi</li>
+                <li>Logitech</li>
+                <li>JBL</li>
+                <!-- Дублікат для безшовної прокрутки -->
+                <li aria-hidden="true">Apple</li>
+                <li aria-hidden="true">Samsung</li>
+                <li aria-hidden="true">Sony</li>
+                <li aria-hidden="true">Lenovo</li>
+                <li aria-hidden="true">ASUS</li>
+                <li aria-hidden="true">Xiaomi</li>
+                <li aria-hidden="true">Logitech</li>
+                <li aria-hidden="true">JBL</li>
+            </ul>
+        </div>
+    </section>
 
     <main>
-        <section id="home" class="hero">
-            <h2>Ласкаво просимо до MarketPlace!</h2>
-            <p>Платформа для зручної купівлі та продажу товарів онлайн.</p>
+        <section id="catalog">
+            <h2>Каталог товарів</h2>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+
+                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
+                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
+                        <svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg>
+                    </div>
+                    <h3 class="font-serif text-xl">Смартфон</h3>
+                    <p class="text-sm text-brand-muted">Смартфон у хорошому стані.</p>
+                    <p class="text-sm font-bold text-brand-gold">Ціна: 67000 грн</p>
+                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
+                </article>
+
+                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
+                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
+                        <svg class="icon" aria-hidden="true"><use href="#icon-laptop"/></svg>
+                    </div>
+                    <h3 class="font-serif text-xl">Ноутбук</h3>
+                    <p class="text-sm text-brand-muted">Ноутбук для геймінгу.</p>
+                    <p class="text-sm font-bold text-brand-gold">Ціна: 6700 грн</p>
+                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
+                </article>
+
+                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
+                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
+                        <svg class="icon" aria-hidden="true"><use href="#icon-tablet"/></svg>
+                    </div>
+                    <h3 class="font-serif text-xl">Планшет</h3>
+                    <p class="text-sm text-brand-muted">Планшет для навчання.</p>
+                    <p class="text-sm font-bold text-brand-gold">Ціна: 9500 грн</p>
+                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
+                </article>
+
+                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
+                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
+                        <svg class="icon" aria-hidden="true"><use href="#icon-headphones"/></svg>
+                    </div>
+                    <h3 class="font-serif text-xl">Навушники</h3>
+                    <p class="text-sm text-brand-muted">Бездротові навушники.</p>
+                    <p class="text-sm font-bold text-brand-gold">Ціна: 2300 грн</p>
+                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
+                </article>
+
+                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
+                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
+                        <svg class="icon" aria-hidden="true"><use href="#icon-watch"/></svg>
+                    </div>
+                    <h3 class="font-serif text-xl">Смарт-годинник</h3>
+                    <p class="text-sm text-brand-muted">Годинник із GPS.</p>
+                    <p class="text-sm font-bold text-brand-gold">Ціна: 3100 грн</p>
+                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
+                </article>
+
+                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
+                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
+                        <svg class="icon" aria-hidden="true"><use href="#icon-keyboard"/></svg>
+                    </div>
+                    <h3 class="font-serif text-xl">Клавіатура</h3>
+                    <p class="text-sm text-brand-muted">Механічна клавіатура.</p>
+                    <p class="text-sm font-bold text-brand-gold">Ціна: 1800 грн</p>
+                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
+                </article>
+
+            </div>
         </section>
 
-        <section id="catalog">
-    <h2>Каталог товарів</h2>
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-
-        <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-            <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                <svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg>
-            </div>
-            <h3 class="font-serif text-xl">Смартфон</h3>
-            <p class="text-sm text-brand-muted">Смартфон у хорошому стані.</p>
-            <p class="text-sm font-bold text-brand-gold">Ціна: 67000 грн</p>
-            <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-        </article>
-
-        <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-            <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                <svg class="icon" aria-hidden="true"><use href="#icon-laptop"/></svg>
-            </div>
-            <h3 class="font-serif text-xl">Ноутбук</h3>
-            <p class="text-sm text-brand-muted">Ноутбук для геймінгу.</p>
-            <p class="text-sm font-bold text-brand-gold">Ціна: 6700 грн</p>
-            <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-        </article>
-
-        <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-            <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                <svg class="icon" aria-hidden="true"><use href="#icon-tablet"/></svg>
-            </div>
-            <h3 class="font-serif text-xl">Планшет</h3>
-            <p class="text-sm text-brand-muted">Планшет для навчання.</p>
-            <p class="text-sm font-bold text-brand-gold">Ціна: 9500 грн</p>
-            <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-        </article>
-
-        <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-            <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                <svg class="icon" aria-hidden="true"><use href="#icon-headphones"/></svg>
-            </div>
-            <h3 class="font-serif text-xl">Навушники</h3>
-            <p class="text-sm text-brand-muted">Бездротові навушники.</p>
-            <p class="text-sm font-bold text-brand-gold">Ціна: 2300 грн</p>
-            <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-        </article>
-
-        <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-            <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                <svg class="icon" aria-hidden="true"><use href="#icon-watch"/></svg>
-            </div>
-            <h3 class="font-serif text-xl">Смарт-годинник</h3>
-            <p class="text-sm text-brand-muted">Годинник із GPS.</p>
-            <p class="text-sm font-bold text-brand-gold">Ціна: 3100 грн</p>
-            <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-        </article>
-
-        <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-            <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                <svg class="icon" aria-hidden="true"><use href="#icon-keyboard"/></svg>
-            </div>
-            <h3 class="font-serif text-xl">Клавіатура</h3>
-            <p class="text-sm text-brand-muted">Механічна клавіатура.</p>
-            <p class="text-sm font-bold text-brand-gold">Ціна: 1800 грн</p>
-            <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-        </article>
-        
-<section id="reviews">
-    <h2>Відгуки</h2>
-    <p id="reviews-status" class="form-message" role="status" aria-live="polite"></p>
-    <div id="reviews-list" class="reviews-list"></div>
-</section>
-
-    </div>
-</section>
+        <!-- Відгуки: окрема секція, поза сіткою каталогу -->
+        <section id="reviews">
+            <h2>Відгуки</h2>
+            <p id="reviews-status" class="form-message" role="status" aria-live="polite"></p>
+            <div id="reviews-list" class="reviews-list"></div>
+        </section>
 
         <section id="sell" class="panel">
             <h2>Продати товар</h2>
