@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Спрайт іконок (Lucide, ISC license) -->
@@ -37,6 +37,9 @@
             <rect x="2" y="4" width="20" height="16" rx="2"/>
             <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"/>
         </symbol>
+        <symbol id="icon-dumbbell" viewBox="0 0 24 24">
+            <path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/>
+        </symbol>
     </svg>
 
     <!-- Закріплена шапка: header + nav в одному блоці -->
@@ -53,10 +56,13 @@
             <ul>
                 <li><a href="#home">Головна</a></li>
                 <li><a href="#catalog">Каталог товарів</a></li>
+                <li><a href="animal-gym.html">Animal Gym</a></li>
                 <li><a href="#reviews">Відгуки</a></li>
                 <li><a href="#sell">Продати товар</a></li>
+                <li><a href="rates.html">Курси валют</a></li>
                 <li><a href="#about">Про нас</a></li>
                 <li><a href="#contacts">Контакти</a></li>
+                
             </ul>
         </nav>
     </div>
@@ -110,68 +116,104 @@
     <main>
         <section id="catalog">
             <h2>Каталог товарів</h2>
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
 
-                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg>
+            <!-- Animal Gym: велике фото посередині, умови знизу, праворуч ціна й запис -->
+            <article class="gym-promo" id="animal-gym">
+                <a class="gym-promo__photo" href="animal-gym.html" style="--img: url('images/animal-gym.jpg')" aria-label="Animal Gym: перейти на сторінку клубу">
+                    <span class="gym-promo__badge">Фітнес-клуб</span>
+                    <span class="gym-promo__name">Animal Gym</span>
+                </a>
+
+                <div class="gym-promo__bottom">
+                    <div class="gym-promo__conditions">
+                        <h3>Умови першого заняття</h3>
+                        <ul>
+                            <li>Одне групове заняття на вибір з розкладу (до 60 хвилин).</li>
+                            <li>Роздягальня, душ і шафка входять у вартість.</li>
+                            <li>Від 16 років; до 18 років потрібна згода батьків.</li>
+                            <li>Запис за 2 години до початку, безкоштовне скасування за 12 годин.</li>
+                        </ul>
+                        <a class="gym-promo__more" href="animal-gym.html#conditions">Усі умови</a>
                     </div>
-                    <h3 class="font-serif text-xl">Смартфон</h3>
-                    <p class="text-sm text-brand-muted">Смартфон у хорошому стані.</p>
-                    <p class="text-sm font-bold text-brand-gold">Ціна: 67000 грн</p>
-                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-                </article>
 
-                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-laptop"/></svg>
+                    <div class="gym-promo__buy">
+                        <p class="gym-promo__price">450 грн</p>
+                        <p class="gym-promo__note">перше заняття</p>
+                        <a class="btn btn--primary" href="animal-gym.html#schedule">Записатися на заняття</a>
                     </div>
-                    <h3 class="font-serif text-xl">Ноутбук</h3>
-                    <p class="text-sm text-brand-muted">Ноутбук для геймінгу.</p>
-                    <p class="text-sm font-bold text-brand-gold">Ціна: 6700 грн</p>
-                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-                </article>
+                </div>
+            </article>
 
-                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-tablet"/></svg>
-                    </div>
-                    <h3 class="font-serif text-xl">Планшет</h3>
-                    <p class="text-sm text-brand-muted">Планшет для навчання.</p>
-                    <p class="text-sm font-bold text-brand-gold">Ціна: 9500 грн</p>
-                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-                </article>
-
-                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-headphones"/></svg>
-                    </div>
-                    <h3 class="font-serif text-xl">Навушники</h3>
-                    <p class="text-sm text-brand-muted">Бездротові навушники.</p>
-                    <p class="text-sm font-bold text-brand-gold">Ціна: 2300 грн</p>
-                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-                </article>
-
-                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-watch"/></svg>
-                    </div>
-                    <h3 class="font-serif text-xl">Смарт-годинник</h3>
-                    <p class="text-sm text-brand-muted">Годинник із GPS.</p>
-                    <p class="text-sm font-bold text-brand-gold">Ціна: 3100 грн</p>
-                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-                </article>
-
-                <article class="flex flex-col gap-2 rounded-lg border border-brand-border bg-brand-surface p-3 shadow-md">
-                    <div class="mb-2 flex h-26 items-center justify-center rounded-lg bg-brand-bg text-brand-gold">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-keyboard"/></svg>
-                    </div>
-                    <h3 class="font-serif text-xl">Клавіатура</h3>
-                    <p class="text-sm text-brand-muted">Механічна клавіатура.</p>
-                    <p class="text-sm font-bold text-brand-gold">Ціна: 1800 грн</p>
-                    <button type="button" class="mt-auto w-full cursor-pointer rounded-lg border-0 bg-brand-gold px-6 py-3 font-sans text-sm font-medium text-brand-on-gold transition hover:bg-brand-gold-hover">Деталі</button>
-                </article>
-
+            <div class="table-wrap">
+                <table class="data-table">
+                    <caption class="visually-hidden">Каталог товарів і послуг</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Товар</th>
+                            <th scope="col">Опис</th>
+                            <th scope="col">Ціна</th>
+                            <th scope="col"><span class="visually-hidden">Дія</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="data-table__title" data-label="Товар">
+                                <span class="data-table__item"><svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg>Смартфон</span>
+                            </td>
+                            <td data-label="Опис">Смартфон у хорошому стані.</td>
+                            <td class="data-table__price" data-label="Ціна">67000 грн</td>
+                            <td class="data-table__action"><button type="button" class="btn btn--primary">Деталі</button></td>
+                        </tr>
+                        <tr>
+                            <td class="data-table__title" data-label="Товар">
+                                <span class="data-table__item"><svg class="icon" aria-hidden="true"><use href="#icon-laptop"/></svg>Ноутбук</span>
+                            </td>
+                            <td data-label="Опис">Ноутбук для геймінгу.</td>
+                            <td class="data-table__price" data-label="Ціна">6700 грн</td>
+                            <td class="data-table__action"><button type="button" class="btn btn--primary">Деталі</button></td>
+                        </tr>
+                        <tr>
+                            <td class="data-table__title" data-label="Товар">
+                                <span class="data-table__item"><svg class="icon" aria-hidden="true"><use href="#icon-tablet"/></svg>Планшет</span>
+                            </td>
+                            <td data-label="Опис">Планшет для навчання.</td>
+                            <td class="data-table__price" data-label="Ціна">9500 грн</td>
+                            <td class="data-table__action"><button type="button" class="btn btn--primary">Деталі</button></td>
+                        </tr>
+                        <tr>
+                            <td class="data-table__title" data-label="Товар">
+                                <span class="data-table__item"><svg class="icon" aria-hidden="true"><use href="#icon-headphones"/></svg>Навушники</span>
+                            </td>
+                            <td data-label="Опис">Бездротові навушники.</td>
+                            <td class="data-table__price" data-label="Ціна">2300 грн</td>
+                            <td class="data-table__action"><button type="button" class="btn btn--primary">Деталі</button></td>
+                        </tr>
+                        <tr>
+                            <td class="data-table__title" data-label="Товар">
+                                <span class="data-table__item"><svg class="icon" aria-hidden="true"><use href="#icon-watch"/></svg>Смарт-годинник</span>
+                            </td>
+                            <td data-label="Опис">Годинник із GPS.</td>
+                            <td class="data-table__price" data-label="Ціна">3100 грн</td>
+                            <td class="data-table__action"><button type="button" class="btn btn--primary">Деталі</button></td>
+                        </tr>
+                        <tr>
+                            <td class="data-table__title" data-label="Товар">
+                                <span class="data-table__item"><svg class="icon" aria-hidden="true"><use href="#icon-keyboard"/></svg>Клавіатура</span>
+                            </td>
+                            <td data-label="Опис">Механічна клавіатура.</td>
+                            <td class="data-table__price" data-label="Ціна">1800 грн</td>
+                            <td class="data-table__action"><button type="button" class="btn btn--primary">Деталі</button></td>
+                        </tr>
+                        <tr>
+                            <td class="data-table__title" data-label="Товар">
+                                <span class="data-table__item"><svg class="icon" aria-hidden="true"><use href="#icon-dumbbell"/></svg>Фітнес-клуб Animal Gym</span>
+                            </td>
+                            <td data-label="Опис">Групові тренування, перше заняття.</td>
+                            <td class="data-table__price" data-label="Ціна">450 грн</td>
+                            <td class="data-table__action"><a class="btn btn--primary" href="animal-gym.html">Записатися</a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 

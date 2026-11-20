@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Gym — фітнес-клуб | MarketPlace</title>
+    <meta name="description" content="Animal Gym: умови, розклад занять на тиждень і запис на перше заняття за 450 грн.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Застосовуємо збережену тему до відображення сторінки (без мигання) -->
+    <script>
+        try {
+            if (localStorage.getItem("theme") === "light") {
+                document.documentElement.classList.add("light-theme");
+            }
+        } catch (error) {}
+    </script>
+</head>
+<body>
+    <div class="site-top">
+        <header class="site-header">
+            <button id="theme-toggle" class="btn btn--ghost" type="button">🌙 Змінити тему</button>
+            <div class="brand">
+                <h1>MarketPlace</h1>
+                <p>Знаходь потрібне. Продавай легко.</p>
+            </div>
+        </header>
+
+        <nav class="site-nav">
+            <ul>
+                <li><a href="index.html#catalog">← До каталогу</a></li>
+                <li><a href="#gym-hero">Animal Gym</a></li>
+                <li><a href="#conditions">Умови</a></li>
+                <li><a href="#schedule">Розклад і запис</a></li>
+                <li><a href="#my-tickets">Мої записи</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section id="gym-hero" class="gym-showcase">
+            <!-- Велике фото (images/animalgym2.jpg) -->
+            <div class="gym-photo" role="img" aria-label="Зал фітнес-клубу Animal Gym" style="--img: url('images/animalgym2.jpg')">
+                <p class="gym-hero__eyebrow">Фітнес-клуб</p>
+                <h2>Animal Gym</h2>
+                <p class="gym-photo__lead">Групові тренування для будь-якого рівня: сила, кардіо, йога та бокс.</p>
+            </div>
+
+            <!-- Опис під фото -->
+            <div class="gym-about">
+                <p class="gym-about__intro">
+                    Animal Gym &mdash; клуб, де кожне заняття проходить у невеликій групі під наглядом тренера.
+                    Оберіть напрямок за своїм рівнем, замовте квиток на перше відвідування онлайн
+                    і прийдіть із мінімумом речей: усе потрібне вже є в клубі.
+                </p>
+
+                <ul class="gym-stats">
+                    <li><strong>6</strong><span>напрямків</span></li>
+                    <li><strong>23</strong><span>заняття на тиждень</span></li>
+                    <li><strong>14</strong><span>людей у групі максимум</span></li>
+                    <li><strong>7</strong><span>днів на тиждень</span></li>
+                </ul>
+
+                <h3 class="gym-about__title">Напрямки</h3>
+                <div class="gym-directions">
+                    <article class="direction"><h4>Eagle Cardio</h4><p>Кардіо для витривалості, початковий рівень.</p></article>
+                    <article class="direction"><h4>Tiger Strength</h4><p>Силове тренування, середній рівень.</p></article>
+                    <article class="direction"><h4>Wolf HIIT</h4><p>Інтервальні навантаження, просунутий рівень.</p></article>
+                    <article class="direction"><h4>Panther Yoga</h4><p>Йога для гнучкості й відновлення, початковий рівень.</p></article>
+                    <article class="direction"><h4>Bear Boxing</h4><p>Бокс: техніка й кондиція, середній рівень.</p></article>
+                    <article class="direction"><h4>Monkey Mobility</h4><p>М'яка мобільність для суглобів і спини, початковий рівень.</p></article>
+                </div>
+
+                <h3 class="gym-about__title">Чому Animal Gym</h3>
+                <div class="perks">
+                    <article class="perk">
+                        <h4>Групові тренування</h4>
+                        <p>Від м'якої мобільності до інтервальних навантажень. Групи до 14 людей.</p>
+                    </article>
+                    <article class="perk">
+                        <h4>Досвідчені тренери</h4>
+                        <p>Перед першим заняттям тренер підкаже, як підібрати навантаження під ваш рівень.</p>
+                    </article>
+                    <article class="perk">
+                        <h4>Усе потрібне в клубі</h4>
+                        <p>Роздягальня, душ і шафка для речей входять у вартість квитка.</p>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Картка запису: залишається на місці під час прокрутки -->
+            <aside class="gym-booking" aria-label="Запис на перше заняття">
+                <p class="gym-booking__label">Квиток на перше заняття</p>
+                <p class="gym-booking__price">450 грн</p>
+                <ul class="gym-booking__list">
+                    <li>Одне групове заняття на вибір (до 60 хвилин)</li>
+                    <li>Роздягальня, душ і шафка</li>
+                    <li>Консультація тренера перед заняттям</li>
+                </ul>
+                <a class="btn btn--primary gym-booking__cta" href="#schedule">Записатися</a>
+                <a class="gym-booking__link" href="#conditions">Прочитати умови</a>
+                <p class="gym-booking__note">Оплата на ресепшені перед заняттям.</p>
+            </aside>
+        </section>
+
+        <section id="conditions">
+            <h2>Умови першого заняття</h2>
+            <div class="faq">
+                <details open>
+                    <summary>Що входить у квиток</summary>
+                    <div class="faq__body">
+                        <ul>
+                            <li>Одне групове заняття на вибір з розкладу (до 60 хвилин).</li>
+                            <li>Користування роздягальнею, душем і шафкою.</li>
+                            <li>Коротка консультація тренера перед заняттям.</li>
+                            <li>Вартість квитка: <strong>450 грн</strong>.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Хто може прийти</summary>
+                    <div class="faq__body">
+                        <ul>
+                            <li>Відвідувачі від 16 років; до 18 років потрібна письмова згода батьків.</li>
+                            <li>Квиток на перше заняття діє лише один раз на людину.</li>
+                            <li>Відвідувач підтверджує відсутність медичних протипоказань до навантажень.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Запис і оплата</summary>
+                    <div class="faq__body">
+                        <ul>
+                            <li>Записатися можна не пізніше ніж за 2 години до початку заняття.</li>
+                            <li>Квиток замовляється на конкретне заняття та конкретну дату.</li>
+                            <li>450 грн сплачується на ресепшені перед заняттям. Онлайн-оплата в цій версії сайту не підключена.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Скасування та перенесення</summary>
+                    <div class="faq__body">
+                        <ul>
+                            <li>Скасувати запис безкоштовно можна не пізніше ніж за 12 годин до початку.</li>
+                            <li>Пізніше скасування або неявка: квиток згорає.</li>
+                            <li>Якщо клуб переносить або скасовує заняття, запис можна змінити на інше заняття без доплати.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Що взяти з собою</summary>
+                    <div class="faq__body">
+                        <ul>
+                            <li>Змінний спортивний одяг і чисте взуття.</li>
+                            <li>Рушник і воду.</li>
+                            <li>Документ для підтвердження віку.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Правила безпеки</summary>
+                    <div class="faq__body">
+                        <ul>
+                            <li>Повідомте тренера про травми та самопочуття до початку заняття.</li>
+                            <li>Виконуйте вказівки тренера й не перевищуйте комфортне навантаження.</li>
+                            <li>Приходьте за 10-15 хвилин до початку, щоб переодягнутися.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section id="schedule">
+            <h2>Розклад занять на тиждень</h2>
+            <p class="gym-lead">Оберіть день і заняття. Квиток на перше заняття коштує 450 грн.</p>
+
+            <div id="day-tabs" class="day-tabs" role="group" aria-label="Дні тижня"></div>
+            <p id="schedule-notice" class="gym-notice" role="status" aria-live="polite" hidden></p>
+            <h3 id="sessions-title" class="sessions-title"></h3>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <caption class="visually-hidden">Розклад занять Animal Gym</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">День</th>
+                            <th scope="col">Час</th>
+                            <th scope="col">Заняття</th>
+                            <th scope="col">Тренер</th>
+                            <th scope="col">Рівень</th>
+                            <th scope="col">Тривалість</th>
+                            <th scope="col">Вільних місць</th>
+                            <th scope="col"><span class="visually-hidden">Запис</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="sessions"></tbody>
+                </table>
+            </div>
+            <noscript><p class="gym-notice">Для перегляду розкладу та запису потрібен увімкнений JavaScript.</p></noscript>
+        </section>
+
+        <section id="my-tickets">
+            <h2>Мої записи</h2>
+            <div id="tickets-list" class="tickets"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year">2026</span> MarketPlace. Усі права захищені.</p>
+    </footer>
+
+    <!-- Вікно оформлення квитка -->
+    <dialog id="booking-dialog" class="booking" aria-labelledby="booking-title">
+        <div class="booking__head">
+            <h2 id="booking-title">Квиток на перше заняття</h2>
+            <button id="booking-close" class="booking__close" type="button" aria-label="Закрити">×</button>
+        </div>
+
+        <form id="booking-form" class="booking__form" novalidate>
+            <div id="booking-summary" class="booking__summary"></div>
+
+            <div class="field">
+                <label for="booking-name">Ім'я та прізвище</label>
+                <input type="text" id="booking-name" autocomplete="name" placeholder="Іван Бойчук">
+                <span class="field-error" id="booking-name-error"></span>
+            </div>
+
+            <div class="field">
+                <label for="booking-phone">Телефон</label>
+                <input type="tel" id="booking-phone" inputmode="tel" autocomplete="tel" placeholder="+380 50 123 45 67">
+                <span class="field-error" id="booking-phone-error"></span>
+            </div>
+
+            <div class="field">
+                <label for="booking-email">Електронна пошта</label>
+                <input type="email" id="booking-email" autocomplete="email" placeholder="example@email.com">
+                <span class="field-error" id="booking-email-error"></span>
+            </div>
+
+            <label class="check">
+                <input type="checkbox" id="booking-terms">
+                <span>Я ознайомився(-лась) з <a href="#conditions" id="booking-terms-link">умовами</a> першого заняття</span>
+            </label>
+            <span class="field-error" id="booking-terms-error"></span>
+
+            <div id="booking-message" class="form-message" role="status" aria-live="polite"></div>
+
+            <button id="booking-submit" class="btn btn--primary booking__submit" type="submit">
+                Замовити квиток — 450 грн
+            </button>
+        </form>
+
+        <div id="booking-ticket" class="booking__ticket" hidden></div>
+    </dialog>
+
+    <script src="gym.js" defer></script>
+</body>
+</html>

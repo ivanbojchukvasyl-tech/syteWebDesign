@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курси валют — MarketPlace</title>
+    <meta name="description" content="Актуальні курси USD, EUR та Bitcoin на MarketPlace.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="rates.css">
+</head>
+<body>
+    <div class="site-top">
+        <header class="site-header">
+            <button id="theme-toggle" class="btn btn--ghost" type="button">🌙 Змінити тему</button>
+            <div class="brand">
+                <h1>MarketPlace</h1>
+                <p>Знаходь потрібне. Продавай легко.</p>
+            </div>
+        </header>
+
+        <nav class="site-nav">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="index.html#catalog">Каталог товарів</a></li>
+                <li><a href="index.html#reviews">Відгуки</a></li>
+                <li><a href="index.html#sell">Продати товар</a></li>
+                <li><a href="rates.html" class="active" aria-current="page">Курси валют</a></li>
+                <li><a href="index.html#about">Про нас</a></li>
+                <li><a href="index.html#contacts">Контакти</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section id="rates">
+            <h2>Курси валют</h2>
+            <p class="rates-lead">
+                Долар і євро — за офіційним курсом НБУ (якщо він недоступний — за резервним джерелом), Bitcoin — за біржовими даними CoinGecko.
+                Курси оновлюються автоматично щохвилини.
+            </p>
+
+            <div class="rates-toolbar">
+                <p id="rates-updated" class="rates-updated">Дані ще не завантажено</p>
+                <button id="rates-refresh" class="btn btn--secondary" type="button">Оновити зараз</button>
+            </div>
+            <p id="rates-status" class="form-message" role="status" aria-live="polite"></p>
+
+            <div class="cards">
+                <article class="card rate-card" id="card-usd" aria-busy="true">
+                    <h3>USD <span class="rate-card__name">Долар США</span></h3>
+                    <p class="rate-card__value" id="usd-value">…</p>
+                    <p class="rate-card__change" id="usd-change"></p>
+                    <p class="card__text" id="usd-note">Офіційний курс НБУ</p>
+                </article>
+
+                <article class="card rate-card" id="card-eur" aria-busy="true">
+                    <h3>EUR <span class="rate-card__name">Євро</span></h3>
+                    <p class="rate-card__value" id="eur-value">…</p>
+                    <p class="rate-card__change" id="eur-change"></p>
+                    <p class="card__text" id="eur-note">Офіційний курс НБУ</p>
+                </article>
+
+                <article class="card rate-card" id="card-btc" aria-busy="true">
+                    <h3>BTC <span class="rate-card__name">Bitcoin</span></h3>
+                    <p class="rate-card__value" id="btc-value">…</p>
+                    <p class="rate-card__change" id="btc-change"></p>
+                    <p class="card__text" id="btc-note">≈ <span id="btc-uah">…</span> грн</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="converter" class="panel">
+            <h2>Калькулятор обміну</h2>
+            <form id="converter-form" class="converter" novalidate>
+                <div class="field">
+                    <label for="conv-amount">Сума</label>
+                    <input type="text" id="conv-amount" inputmode="decimal" value="100" autocomplete="off">
+                </div>
+                <div class="field">
+                    <label for="conv-from">З</label>
+                    <select id="conv-from">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="BTC">BTC</option>
+                        <option value="UAH">UAH</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="conv-to">У</label>
+                    <select id="conv-to">
+                        <option value="UAH">UAH</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="BTC">BTC</option>
+                    </select>
+                </div>
+            </form>
+            <p id="conv-result" class="converter__result" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year">2026</span> MarketPlace. Усі права захищені.</p>
+    </footer>
+
+    <script src="rates.js" defer></script>
+</body>
+</html>

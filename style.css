@@ -511,6 +511,901 @@ a:focus-visible {
 input.invalid, textarea.invalid { border-color: var(--color-error); }
 input.valid,   textarea.valid   { border-color: var(--color-success); }
 
+/* ==========================================================
+   ANIMAL GYM (сторінка animal-gym.html)
+   ========================================================== */
+[hidden] {
+    display: none !important;
+}
+
+a.btn {
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* ----- Головний блок ----- */
+.gym-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-6) var(--space-5);
+    background:
+        radial-gradient(
+            circle at 85% 0%,
+            color-mix(in srgb, var(--color-primary) 22%, transparent),
+            transparent 60%
+        ),
+        var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.gym-hero h2 {
+    margin-bottom: 0;
+    font-size: 2.5rem;
+}
+
+.gym-hero__eyebrow {
+    color: var(--color-accent);
+    font-size: var(--font-size-small);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.gym-hero__lead {
+    max-width: 40rem;
+    color: var(--color-text-muted);
+}
+
+.gym-offer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius);
+}
+
+.gym-offer__label {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.gym-offer__price {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+.gym-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.gym-lead {
+    margin-bottom: var(--space-4);
+    color: var(--color-text-muted);
+}
+
+/* ----- Переваги ----- */
+.perks {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+.perk {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.perk p {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+/* ----- Умови (details) ----- */
+.faq {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.faq details {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.faq summary {
+    padding: var(--space-3) var(--space-4);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.faq summary:hover,
+.faq details[open] summary {
+    color: var(--color-accent);
+}
+
+.faq__body {
+    padding: 0 var(--space-4) var(--space-4);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.faq__body ul {
+    padding-left: var(--space-5);
+}
+
+.faq__body li + li {
+    margin-top: var(--space-1);
+}
+
+/* ----- Розклад ----- */
+.gym-notice {
+    margin-bottom: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius);
+    font-size: var(--font-size-small);
+}
+
+.day-tabs {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-1);
+    overflow-x: auto;
+}
+
+.day-tab {
+    flex: 1 0 auto;
+    min-width: 3rem;
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--font-size-small);
+    color: var(--color-text);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.day-tab:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.day-tab[aria-pressed="true"] {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-weight: 500;
+}
+
+.day-tab--today {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+}
+
+.sessions-title {
+    margin-bottom: var(--space-3);
+}
+
+.sessions {
+    display: grid;
+    gap: var(--space-3);
+    list-style: none;
+}
+
+.session {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3) var(--space-4);
+    align-items: center;
+    padding: var(--space-4);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.session__time {
+    display: flex;
+    flex-direction: column;
+    min-width: 4rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+.session__time small {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+.session__title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+}
+
+.session__meta {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.session__action {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.session__spots {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.session__spots--low {
+    color: var(--color-error);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ----- Мої записи ----- */
+.tickets {
+    display: grid;
+    gap: var(--space-3);
+}
+
+.ticket-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius);
+}
+
+.ticket-card__code {
+    color: var(--color-accent);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.ticket-card__meta,
+.gym-empty {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+/* ----- Вікно запису (dialog) ----- */
+body:has(dialog[open]) {
+    overflow: hidden;
+}
+
+.booking {
+    /* глобальний скидання margin:0 прибирає центрування, повертаємо його */
+    margin: auto;
+    padding: 0;
+    width: min(28rem, calc(100% - 2rem));
+    max-height: calc(100svh - 2rem);
+    overflow-y: auto;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.booking::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.booking__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.booking__head h2 {
+    margin-bottom: 0;
+    font-size: var(--font-size-h3);
+}
+
+.booking__close {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--color-text);
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.booking__close:hover {
+    color: var(--color-accent);
+}
+
+.booking__form {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-4);
+}
+
+.booking__summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-3);
+    background-color: var(--color-field);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-size: var(--font-size-small);
+}
+
+.booking__summary span {
+    color: var(--color-text-muted);
+}
+
+.booking__summary .booking__price {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.check {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: var(--font-size-small);
+}
+
+.check input {
+    margin-top: 0.2rem;
+    accent-color: var(--color-primary);
+}
+
+.check a {
+    color: var(--color-accent);
+}
+
+.booking__submit {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+}
+
+/* ----- Готовий квиток ----- */
+.booking__ticket {
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--space-4);
+}
+
+.ticket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-5) var(--space-4);
+    text-align: center;
+    border: 2px dashed var(--color-accent);
+    border-radius: var(--radius);
+}
+
+.ticket__label {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.ticket__code {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+}
+
+.ticket__meta {
+    font-size: var(--font-size-small);
+}
+
+.ticket__hint {
+    margin-top: var(--space-2);
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+}
+
+/* ===== Animal Gym: велика картка в каталозі (index.html) ===== */
+.gym-promo {
+    margin-bottom: var(--space-5);
+    overflow: hidden;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Фото: images/animal-gym.jpg; поки файлу немає, видно золотий градієнт */
+.gym-promo__photo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 18rem;
+    text-decoration: none;
+    color: #f5f5f5;
+    background-color: var(--color-bg);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+        var(--img, none),
+        radial-gradient(
+            circle at 50% 30%,
+            color-mix(in srgb, var(--color-primary) 35%, transparent),
+            transparent 70%
+        );
+    background-size: cover;
+    background-position: center;
+}
+
+.gym-promo__badge {
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-size-small);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #111111;
+    background-color: #F0D8AD;
+    border-radius: 999px;
+}
+
+.gym-promo__name {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s;
+}
+
+.gym-promo__photo:hover .gym-promo__name {
+    transform: scale(1.04);
+}
+
+.gym-promo__bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border-top: 1px solid var(--color-border);
+}
+
+.gym-promo__conditions ul {
+    margin: var(--space-2) 0;
+    padding-left: var(--space-5);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.gym-promo__conditions li + li {
+    margin-top: var(--space-1);
+}
+
+.gym-promo__more {
+    color: var(--color-accent);
+    font-size: var(--font-size-small);
+}
+
+.gym-promo__buy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--space-1);
+}
+
+.gym-promo__price {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--color-accent);
+}
+
+.gym-promo__note {
+    margin-bottom: var(--space-2);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.gym-promo__buy .btn {
+    display: inline-block;
+    padding: var(--space-3) var(--space-5);
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .gym-promo__photo {
+        min-height: 26rem;
+    }
+
+    .gym-promo__bottom {
+        grid-template-columns: 1fr auto;
+        gap: var(--space-6);
+        padding: var(--space-5);
+    }
+
+    .gym-promo__buy {
+        align-items: flex-end;
+        text-align: right;
+    }
+}
+
+/* ----- Розклад у вигляді таблиці ----- */
+.table-wrap {
+    overflow-x: auto;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-small);
+}
+
+.data-table th,
+.data-table td {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.data-table th {
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--color-accent);
+    background-color: var(--color-field);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.data-table tbody tr:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 6%, transparent);
+}
+
+.data-table small {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+}
+
+.data-table__time {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--color-accent);
+}
+
+.data-table__title {
+    font-weight: 500;
+}
+
+.data-table__action {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Каталог товарів: назва з іконкою, ціна */
+.data-table__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-weight: 500;
+}
+
+.data-table .icon {
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-accent);
+}
+
+.data-table__price {
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--color-accent);
+}
+
+.data-table a.btn {
+    padding: var(--space-2) var(--space-4);
+}
+
+/* Телефон: кожен рядок таблиці стає карткою */
+@media (max-width: 767px) {
+    .data-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+
+    .data-table,
+    .data-table tbody,
+    .data-table tr,
+    .data-table td {
+        display: block;
+    }
+
+    .data-table tr {
+        padding: var(--space-3) var(--space-4);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .data-table tbody tr:last-child {
+        border-bottom: 0;
+    }
+
+    .data-table td {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: var(--space-3);
+        padding: var(--space-1) 0;
+        border: 0;
+        text-align: right;
+    }
+
+    .data-table td::before {
+        content: attr(data-label);
+        color: var(--color-text-muted);
+        text-align: left;
+    }
+
+    .data-table__action {
+        justify-content: flex-end;
+        padding-top: var(--space-2);
+    }
+
+    .data-table__action::before {
+        content: none;
+    }
+}
+
+/* ----- Animal Gym: фото, опис і фіксована картка запису ----- */
+.gym-showcase {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+}
+
+.gym-photo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: var(--space-2);
+    min-height: 22rem;
+    padding: var(--space-5);
+    color: #f5f5f5;
+    background-color: var(--color-surface);
+    background-image:
+        linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1) 60%),
+        var(--img, none),
+        radial-gradient(
+            circle at 70% 20%,
+            color-mix(in srgb, var(--color-primary) 35%, transparent),
+            transparent 65%
+        );
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.gym-photo h2 {
+    margin-bottom: 0;
+    font-size: 3rem;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.gym-photo .gym-hero__eyebrow {
+    color: #F0D8AD;
+}
+
+.gym-photo__lead {
+    max-width: 34rem;
+}
+
+.gym-about {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.gym-about__intro {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+}
+
+.gym-about__title {
+    margin-top: var(--space-2);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.gym-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    list-style: none;
+}
+
+.gym-stats li {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-4);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.gym-stats strong {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 1.1;
+    color: var(--color-accent);
+}
+
+.gym-stats span {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.gym-directions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+}
+
+.direction {
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius);
+}
+
+.direction h4,
+.perk h4 {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+}
+
+.direction p {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.gym-booking {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.gym-booking__label {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.gym-booking__price {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-accent);
+}
+
+.gym-booking__list {
+    padding-left: var(--space-5);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.gym-booking__list li + li {
+    margin-top: var(--space-1);
+}
+
+.gym-booking__cta {
+    padding: var(--space-3) var(--space-4);
+    text-align: center;
+}
+
+.gym-booking__link {
+    text-align: center;
+    color: var(--color-accent);
+    font-size: var(--font-size-small);
+}
+
+.gym-booking__note {
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .gym-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .gym-directions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Від 1024px: фото й опис ліворуч, картка запису праворуч і не рухається */
+@media (min-width: 1024px) {
+    .gym-showcase {
+        grid-template-columns: minmax(0, 1fr) 20rem;
+        grid-template-areas:
+            "photo booking"
+            "about booking";
+        gap: var(--space-5) var(--space-6);
+    }
+
+    .gym-photo   { grid-area: photo; min-height: 30rem; }
+    .gym-about   { grid-area: about; }
+
+    .gym-booking {
+        grid-area: booking;
+        align-self: start;
+        position: sticky;
+        top: 10rem;   /* під закріпленою шапкою */
+    }
+}
+
 /* ===== Footer ===== */
 .site-footer {
     padding: var(--space-4);

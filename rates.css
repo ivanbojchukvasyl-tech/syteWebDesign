@@ -1,0 +1,123 @@
+/* Стилі сторінки «Курси валют». Використовують токени з основного CSS. */
+
+.rates-lead {
+    max-width: 42rem;
+    margin-bottom: var(--space-4);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.rates-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.rates-updated {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+/* ===== Картки курсів ===== */
+.rate-card h3 {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2);
+    color: var(--color-accent);
+}
+
+.rate-card__name {
+    font-family: var(--font-body);
+    font-size: var(--font-size-small);
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+.rate-card__value {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+
+.rate-card__change {
+    min-height: 1.25rem;
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-muted);
+}
+
+.rate-card__change.up   { color: var(--color-success); }
+.rate-card__change.down { color: var(--color-error); }
+
+.rate-card.is-error .rate-card__value {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    color: var(--color-error);
+}
+
+/* Короткий спалах значення при оновленні (вимкнено для prefers-reduced-motion) */
+@keyframes rate-flash {
+    from { color: var(--color-accent); }
+    to   { color: var(--color-text); }
+}
+
+.rate-card__value.updated {
+    animation: rate-flash 0.9s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rate-card__value.updated {
+        animation: none;
+    }
+}
+
+/* ===== Калькулятор ===== */
+.converter {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    width: 100%;
+}
+
+.field select {
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--font-size-small);
+    color: var(--color-text);
+    background-color: var(--color-field);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+select:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.converter__result {
+    min-height: 2rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+}
+
+.converter__result.error {
+    font-family: var(--font-body);
+    font-size: var(--font-size-small);
+    color: var(--color-error);
+}
+
+@media (min-width: 768px) {
+    .converter {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+}
